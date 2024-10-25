@@ -19,16 +19,16 @@ Para instalar o estoque, siga estas etapas:
 Linux, macOS e Windows:
 
 ```
-docker-compose run build
+docker-compose build
 docker-compose start
 ```
 
 ## ☕ Editando em tempo real 
 
-Para editar em tempo real o front-end, siga estas etapas:
+O backend ja é editado em tempo real, para o front-end, siga estas etapas:
 
 ```
-instale o npm
+instale o node (v18 ou superior)
 entre na pasta estoque_frontend
 npm install
 npm run dev
