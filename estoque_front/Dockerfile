@@ -1,9 +1,13 @@
 FROM node:22 as builder
 
-WORKDIR /var/www/araxa_cre_frontend
+WORKDIR /var/www/estoque_frontend
 
 COPY . .
 
+RUN npm install
+
+RUN npm run build
+
 EXPOSE 3000
 
-CMD ["sh", "-c", "npm install && npm run build && npm run start"]
+CMD ["npm", "run", "start"]

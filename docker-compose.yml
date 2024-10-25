@@ -53,6 +53,23 @@ services:
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
       - ./.env:/var/www/estoque_api/.env
 
+  estoque_frontend:
+    build:
+      context: estoque_frontend
+      dockerfile: ./Dockerfile
+    image: estoque_frontend
+    container_name: estoque_frontend
+    restart: unless-stopped
+    working_dir: /var/www/estoque_frontend
+    command: sh -c "npm run start"
+    env_file: .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - estoque_api
+
   estoque_redis:
     image: redis:alpine
     container_name: estoque_redis
