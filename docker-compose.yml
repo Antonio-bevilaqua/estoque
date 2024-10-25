@@ -1,0 +1,67 @@
+version: "3.8"
+services:
+  estoque_db:
+    image: mysql:8.0
+    container_name: estoque_db
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./estoque_db:/var/lib/mysql
+
+  estoque_api:
+    build:
+      context: estoque_api
+      dockerfile: ./Dockerfile
+    image: estoque_api
+    container_name: estoque_api
+    restart: unless-stopped
+    working_dir: /var/www/estoque_api
+    env_file: .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./estoque_api:/var/www/estoque_api
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./.env:/var/www/estoque_api/.env
+    ports:
+      - "11000:11000"
+    depends_on:
+      - estoque_db
+
+  estoque_queues:
+    build:
+      context: .
+      dockerfile: ./supervisor/Dockerfile
+    image: estoque_queues
+    container_name: estoque_queues
+    restart: always
+    working_dir: /var/www/estoque_api
+    env_file: .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./estoque_api:/var/www/estoque_api
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./.env:/var/www/estoque_api/.env
+
+  estoque_redis:
+    image: redis:alpine
+    container_name: estoque_redis
+    command: redis-server /conf/redis.conf --port 6900
+    restart: unless-stopped
+    volumes:
+      - ./redis/data:/data
+      - ./redis/conf:/conf
+    ports:
+      - "6900:6900"
+    expose:
+      - "6900"
