@@ -55,7 +55,7 @@ services:
 
   estoque_frontend:
     build:
-      context: estoque_frontend
+      context: estoque_front
       dockerfile: ./Dockerfile
     image: estoque_frontend
     container_name: estoque_frontend
