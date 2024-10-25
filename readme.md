@@ -19,6 +19,9 @@ Para instalar o estoque, siga estas etapas:
 Linux, macOS e Windows:
 
 ```
+crie um arquivo .env na raiz do projeto
+adicione as configurações do .env do laravel
+altere o arquivo .env do front-end em estoque_front
 docker-compose build
 docker-compose start
 ```
