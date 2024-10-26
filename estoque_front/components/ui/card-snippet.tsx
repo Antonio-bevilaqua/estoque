@@ -61,7 +61,7 @@ const CardSnippet = ({
         )}
         {subtitle && (
           <div className="grid w-full">
-            <div className="block flex-1 leading-normal text-slate-500">
+            <div className="block flex-1 leading-normal text-center md:text-left text-slate-500">
               {" "}
               {subtitle}
             </div>

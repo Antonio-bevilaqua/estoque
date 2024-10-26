@@ -26,12 +26,12 @@ export default function Content() {
     getMonthlyReport();
   }, []);
   return (
-    <div className="grid md:grid-cols-2 overflow-x-auto">
-      <div className="order-2 md:order-1">
-        <SalesTable title={null} className="mt-0" />
-        <MostSelledProducts />
+    <div className="flex flex-col lg:flex-row w-full">
+      <div className="order-2 lg:order-1 flex-1">
+        <SalesTable title={null} className="mt-0 overflow-x-auto w-full" />
+        <MostSelledProducts className="mt-0 overflow-x-auto w-full" />
       </div>
-      <div className="order-1 md:order-2">
+      <div className="order-1 lg:order-2 lg:w-[600px]">
         <EarningsChart />
       </div>
     </div>

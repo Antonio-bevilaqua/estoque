@@ -10,16 +10,19 @@ import {
 import { ReportsContext } from "../provider/Provider";
 import DefaultImage from "@/public/images/watermark/no-image.jpg";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getApiImgSrc } from "@/lib/utils";
+import { cn, getApiImgSrc } from "@/lib/utils";
 import { Product } from "@/types/Product";
 import { moneyMask } from "@/lib/masks";
 import { StarIcon } from "lucide-react";
+import { ComponentWithClass } from "@/lib/type";
 
-export default function MostSelledProducts() {
+export default function MostSelledProducts({
+  className = "",
+}: ComponentWithClass) {
   const { state } = useContext(ReportsContext);
 
   return (
-    <div className="mt-4">
+    <div className={cn("mt-4", className)}>
       <hr />
       <h4 className="text-lg mt-5 pb-0 flex gap-2">
         Top 3 Produtos Vendidos <StarIcon />

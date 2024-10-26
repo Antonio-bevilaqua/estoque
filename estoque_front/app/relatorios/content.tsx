@@ -10,18 +10,20 @@ export default function Content() {
   if (!state.initialized)
     return (
       <>
-        <p className="text-slate-500">Gere aqui relatórios de faturamento e gestão dos seus produtos.</p>
+        <p className="text-slate-500">
+          Gere aqui relatórios de faturamento e gestão dos seus produtos.
+        </p>
       </>
     );
 
   return (
     <>
-      <div className="grid md:grid-cols-2 overflow-x-auto">
-        <div className="order-2 md:order-1">
-          <SalesTable />
-          <MostSelledProducts />
+      <div className="flex flex-col lg:flex-row">
+        <div className="order-2 lg:order-1 flex-1">
+          <SalesTable className="overflow-x-auto" />
+          <MostSelledProducts className="overflow-x-auto" />
         </div>
-        <div className="order-1 md:order-2">
+        <div className="order-1 lg:order-2 lg:w-[500px] lg:mt-10">
           <EarningsChart />
         </div>
       </div>

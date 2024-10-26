@@ -18,6 +18,7 @@ import { Pie } from "react-chartjs-2";
 import { useContext } from "react";
 import { ReportsContext } from "../provider/Provider";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 ChartJS.register(
   CategoryScale,
@@ -30,6 +31,8 @@ ChartJS.register(
 );
 
 export default function EarningsChart({ height = 350 }: { height?: number }) {
+  const isMd = useMediaQuery("(min-width: 768px)");
+  const realHeight = height;
   const { state } = useContext(ReportsContext);
   const { theme: config } = useThemeStore();
   const { theme: mode } = useTheme();
@@ -96,7 +99,7 @@ export default function EarningsChart({ height = 350 }: { height?: number }) {
 
   return (
     <div className="mt-5">
-      <Pie options={options} data={data} height={height} />
+      <Pie options={options} data={data} height={realHeight} />
     </div>
   );
 }

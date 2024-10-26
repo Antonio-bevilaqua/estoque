@@ -12,7 +12,7 @@ export default function page() {
       <Breadcrumbs className="mb-4">
         <BreadcrumbItem className="text-primary">Inicio</BreadcrumbItem>
       </Breadcrumbs>
-      <div className="grid gap-4">
+      <div className="flex flex-col gap-4">
         <TopCards />
         <CardSnippet
           title={"Olá, seja bem vindo!"}
