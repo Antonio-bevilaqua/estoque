@@ -15,7 +15,7 @@ export default function page() {
           backgroundPosition: "center center",
         }}
       >
-        <div className="w-full bg-white/90 md:bg-white md:w-[60vw] lg:w-[50vw] xl:w-[35vw] shadow-[0_0_30px_0_rgba(0,0,0,0.3)] py-8 rounded-none flex items-center relative z-10 p-2 md:p-14 bg-neutral-100 h-full">
+        <div className="w-full bg-background/90 md:bg-background md:w-[60vw] lg:w-[50vw] xl:w-[35vw] shadow-[0_0_30px_0_rgba(0,0,0,0.3)] py-8 rounded-none flex items-center relative z-10 p-2 md:p-14 h-full">
           <SupportForm />
         </div>
       </div>
