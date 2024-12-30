@@ -44,9 +44,6 @@ crie um arquivo Dockerfile
 configure o dockerfile para rodar os comandos acima
 ```
 
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Forneça uma referência de opções
-para pontos de bônus!
-
 ## 📝 Licença
 
 Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE) para mais detalhes.
